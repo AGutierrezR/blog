@@ -5,7 +5,6 @@ const sass = require('gulp-sass')
 const plumber = require('gulp-plumber')
 const browsersync = require( 'browser-sync' ).create();
 
-
 // Limpieza de directorio _site/
 function clean() {
   return del([ '_site' ]);
@@ -14,10 +13,9 @@ function clean() {
 // Iniciando BrowserSync
 function browserSync(done) {
   browsersync.init({
-    server: {
-      baseDir: '_site/'
-    },
-    port: 3000
+		proxy: 'localhost:4000/blog/',
+		injectChanges: true,
+		watchEvents: [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ]
   });
   done();
 }
@@ -31,6 +29,11 @@ function browserSyncReload(done){
 // Ejecutando comando Jekyll usando Spawn de Child_process
 function jekyll() {
   return cp.spawn('bundle', ['exec', 'jekyll', 'build'], { stdio: 'inherit' });
+}
+
+// Creacion de servidor para desarrollo
+function jekyllServe() {
+  return cp.spawn('bundle', ['exec', 'jekyll', 'serve'], { stdio: 'inherit' });
 }
 
 // CSS
@@ -51,17 +54,21 @@ function watchFiles() {
       './_layouts/**/*',
       './_pages/**/*',
       './_posts/**/*',
-      './*.md'
+      './*.md',
+      './*.markdown',
     ],
-    series(jekyll, browserSyncReload)
+    browserSyncReload
   );
 }
 
+
+const serve = series(clean, jekyllServe);
 const build = series(clean, jekyll);
-const w = series(build, parallel(watchFiles, browserSync));
+const w = parallel(watchFiles, browserSync);
 
 
 // Exportando Tasks
+exports.serve = serve;
 exports.css = css;
 exports.clean = clean;
 exports.jekyll = jekyll;
