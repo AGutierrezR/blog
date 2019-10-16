@@ -1,6 +1,8 @@
-const { watch, series, parallel } = require( 'gulp' );
+const { watch, series, parallel, src, dest } = require( 'gulp' );
 const del = require( 'del' )
 const cp = require( 'child_process' );
+const sass = require('gulp-sass')
+const plumber = require('gulp-plumber')
 const browsersync = require( 'browser-sync' ).create();
 
 
@@ -34,10 +36,16 @@ function jekyll() {
 // CSS
 function css() {
   // TODO: Agregar soporte para Sass
+  return src('./_assets/scss/styles.scss')
+    .pipe(plumber())
+    .pipe(sass({ outputStyle: "expanded" }).on('error', sass.logError))
+    .pipe(dest('./_site/assets/css'))
+    .pipe(browsersync.stream());
 }
 
 // Monitoriando cambios
 function watchFiles() {
+  watch('./_assets/scss/**/*', css),
   watch(
     [
       './_posts/**/*',
@@ -52,6 +60,7 @@ const w = parallel(watchFiles, browserSync);
 
 
 // Exportando Tasks
+exports.css = css;
 exports.clean = clean;
 exports.jekyll = jekyll;
 exports.build = build;
