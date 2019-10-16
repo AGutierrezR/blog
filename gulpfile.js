@@ -36,27 +36,29 @@ function jekyll() {
 // CSS
 function css() {
   // TODO: Agregar soporte para Sass
-  return src('./_assets/scss/styles.scss')
+  return src('./scss/styles.scss')
     .pipe(plumber())
     .pipe(sass({ outputStyle: "expanded" }).on('error', sass.logError))
-    .pipe(dest('./_site/assets/css'))
+    .pipe(dest('./assets/css'))
     .pipe(browsersync.stream());
 }
 
 // Monitoriando cambios
 function watchFiles() {
-  watch('./_assets/scss/**/*', css),
+  watch('./scss/**/*', css),
   watch(
     [
+      './_layouts/**/*',
+      './_pages/**/*',
       './_posts/**/*',
-      './_layouts/**/*'
+      './*.md'
     ],
     series(jekyll, browserSyncReload)
   );
 }
 
 const build = series(clean, jekyll);
-const w = parallel(watchFiles, browserSync);
+const w = series(build, parallel(watchFiles, browserSync));
 
 
 // Exportando Tasks
