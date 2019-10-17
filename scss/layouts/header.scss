@@ -1,0 +1,29 @@
+.site-header {
+  position: relative;
+  width: 100%;
+  height: 33%;
+  margin-bottom: 5rem;
+  padding-top: 20px;
+  text-align: center;
+  color: #039cb7;
+}
+
+.site-header-content {
+  width: auto;
+  margin: 0 20px ;
+}
+
+.blog-title {
+  margin: 10px 0 10px 0;
+  font-size: 4.2rem;
+  letter-spacing: -1px;
+  font-weight: 600;
+  color: #085f78;
+  @media only screen and (min-width: 992px) {
+    font-size: 5rem;
+  }
+
+  .post-template & {
+  font-size: 3.8rem;
+  }
+}
