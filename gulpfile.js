@@ -33,7 +33,7 @@ function jekyll() {
 
 // Creacion de servidor para desarrollo
 function jekyllServe() {
-  return cp.spawn('bundle', ['exec', 'jekyll', 'serve'], { stdio: 'inherit' });
+  return cp.spawn('bundle', ['exec', 'jekyll', 'serve', '--force_polling'], { stdio: 'inherit' });
 }
 
 // CSS
@@ -42,7 +42,8 @@ function css() {
   return src('./scss/styles.scss')
     .pipe(plumber())
     .pipe(sass({ outputStyle: "expanded" }).on('error', sass.logError))
-    .pipe(dest('./assets/css'))
+    .pipe(dest('./assets/css/'))
+    .pipe(dest('./_site/assets/css/'))
     .pipe(browsersync.stream());
 }
 
