@@ -8,23 +8,29 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
     <title>{{ page.title }}</title>
   </head>
-  <body>
+  <body class="home-template">
     
     {% include header.html %}
 
     <div id="content" class="site-content">
       <div id="primary" class="content-area">
-        <main id="main" class="site-main">
+        <main id="main" class="site-main">    
 
-          {{ content }}
+          {% for post in site.posts %}
 
-          <ul>
-            {% for post in site.posts %}
-              <li>
+          <article class="post">
+            <header class="post-header">
+              <span class="post-meta">Meta</span>
+              <h2 class="post-title">
                 <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
+              </h2>
+            </header>
+            <section class="post-excerpt">
+              {{ post.content | truncatewords: 25 }}
+            </section>
+          </article>
+          
+          {% endfor %}
 
         </main> 
       </div> 

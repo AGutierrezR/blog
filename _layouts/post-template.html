@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css" />
+    <title>{{ page.title }}</title>
+  </head>
+  <body class="post-template">
+
+    <div id="content" class="site-content">
+      <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+
+          <div class="custombtn">
+            <a class="btn" href="{{ site.baseurl }}">Atras</a>
+          </div>
+          
+          <article class="post">
+            <header class="post-header">
+              <span class="post-meta">
+                {{ page.date | date: "%B %d, %Y" }}
+              </span>
+              <h1 class="post-title">
+                {{ page.title }}
+              </h1>
+            </header>
+            <section class="post-content">
+              {{ content }}
+            </section>
+          </article>
+
+        </main>
+      </div>
+    </div>
+
+    {% include footer.html %}
+    
+  </body>
+</html>
