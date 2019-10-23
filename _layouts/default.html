@@ -20,7 +20,9 @@
 
           <article class="post">
             <header class="post-header">
-              <span class="post-meta">Meta</span>
+              <span class="post-meta">
+                {{ post.date | date: "%B %d, %Y" }}
+              </span>
               <h2 class="post-title">
                 <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
               </h2>
