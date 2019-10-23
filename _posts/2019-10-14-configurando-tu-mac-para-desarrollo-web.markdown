@@ -123,6 +123,8 @@ Yarn es un gestor de paquetes similar a NPM, instalarlo no es algo vital pero no
 
 #### Si `n` no esta instalado
 
+En la terminal:
+
 ```shell
 brew install yarn
 ```
@@ -131,48 +133,46 @@ Con este comando instalaras yarn y la ultima versión de NodeJS.
 
 #### Si `n` esta instalado:
 
-Introducimos el siguiente comando:
+1. En la terminal
 
-```shell
-brew install yarn --ignore-dependencies
-```
+    ```shell
+    brew install yarn --ignore-dependencies
+    ```
 
 2. Revisamos `node` en el entorno `$PATH`
 
-  ```shell
-  which node
-  ```
-  
-  debería retornar => `/Users/<your's-user-name>/n/bin/node`
+    ```shell
+    which node
+    ```
+    debería retornar => `/Users/<your's-user-name>/n/bin/node`
 
 3. Revisamos `brew doctor`, debería mostrar un mensaje de ADVERTENCIA diciendo que no existe las dependencias de yarn
 
-  ```shell
-  brew doctor
-  ```
-  
-  Si retorna algo como:
-  ```
-  Warning: Some installed formulae are missing dependencies.
-  You should `brew install` the missing dependencies:
-      brew install node
+    ```shell
+    brew doctor
+    ```
 
-  Run `brew missing` for more details.
-  ```
-  Continua con el siguiente paso
+    Si retorna algo como:
+    ```
+    Warning: Some installed formulae are missing dependencies.
+    You should `brew install` the missing dependencies:
+        brew install node
+
+    Run `brew missing` for more details.
+    ```
+    Continua con el siguiente paso
   
 4. Creamos vinculo de n para Homebrew
   
-  ```shell
-  ln -s ~/n/ /usr/local/Cellar/node
-  ```
+    ```shell
+    ln -s ~/n/ /usr/local/Cellar/node
+    ```
 
 5. Revisamos `brew doctor` otra vez. No debería ningún mensaje de ADVERTENCIA.
 
-  ```shell
-  brew doctor
-  ```
-
+    ```shell
+    brew doctor
+    ```
 
 ### Instalando un editor de texto
 
