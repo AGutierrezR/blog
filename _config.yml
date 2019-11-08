@@ -69,3 +69,7 @@ social:
     url: https://www.linkedin.com/in/agutierrezr/
   - title: instagram
     url: https://www.instagram.com/andy.codes/
+
+
+markdown: kramdown
+highlighter: rouge
