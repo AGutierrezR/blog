@@ -1,0 +1,25 @@
+pre.highlight::before {
+  position: absolute;
+  color: #ccc;
+  line-height: 1;
+  font-size: 14px;
+  top: 0;
+  right: 0;
+  padding: 5px 10px 0;
+}
+
+.language-css pre.highlight::before {
+  content: 'CSS';
+}
+
+.language-scss pre.highlight::before {
+  content: 'SCSS';
+}
+
+.language-shell pre.highlight::before {
+  content: 'Shell';
+}
+
+.language-js pre.highlight::before {
+  content: 'JS';
+}

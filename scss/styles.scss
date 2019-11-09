@@ -16,28 +16,27 @@
   0. Base
   ========================================================================== */
 
-@import 'base/minireset';
-
+@import "base/minireset";
 
 /* ==========================================================================
   1. General
   ========================================================================== */
 
-@import 'base/generic';
-
+@import "base/generic";
+@import "base/general";
+@import "base/hightlight";
 
 /* ==========================================================================
   2. Utilities
   ========================================================================== */
-   
-@import 'abstracts/utilities';
 
+@import "abstracts/utilities";
 
 /* ==========================================================================
   3. 
   ========================================================================== */
 
-@import 'layouts/header';
+@import "layouts/header";
 
 .custombtn {
   width: 80%;
@@ -47,7 +46,7 @@
   a {
     display: inline-block;
     font-size: 1.5rem;
-    color: #9EABB3;
+    color: #9eabb3;
   }
 }
 
@@ -61,7 +60,7 @@
   // Agregando border-top alos post que posea un post arriba
   + .post {
     padding-top: 4rem;
-    border-top: #EBF2F6 1px solid;
+    border-top: #ebf2f6 1px solid;
   }
 
   &-title {
@@ -82,18 +81,17 @@
     display: inline-block;
     margin: 0 0 5px 0;
     font-size: 1.5rem;
-    color: #9EABB3;
+    color: #9eabb3;
   }
 
   &-meta a {
-    color: #9EABB3;
+    color: #9eabb3;
     text-decoration: none;
   }
 
   &-meta a:hover {
     text-decoration: underline;
   }
-
 }
 
 // // Esto evita que las imagens grandes ocasionen scrolll lateral
@@ -104,9 +102,7 @@
 .post-template .post-content > p:first-child {
   font-size: 2.2rem;
   margin-bottom: 30px;
-  color: #333;
 }
-
 
 .post-template .post-content > p:first-child::first-letter {
   font-size: 5rem;
@@ -119,10 +115,8 @@
   color: #039cb7;
 }
 
-
-
 /* ==========================================================================
   4. Footer - The bottom of every page
   ========================================================================== */
 
-@import 'layouts/footer';
+@import "layouts/footer";
