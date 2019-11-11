@@ -8,6 +8,9 @@ pre.highlight::before {
   padding: 5px 10px 0;
 }
 
+.language-html pre.highlight::before {
+  content: 'HTML';
+}
 .language-css pre.highlight::before {
   content: 'CSS';
 }
